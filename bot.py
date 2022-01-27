@@ -329,7 +329,7 @@ def check_wp():
         }
     else :
         printmsg=""
-        url = 'http://13.125.167.49:5000/colstdata'
+        url = 'http://34.229.215.180:5000/colstdata'
         headers = { 'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36'}
         response = requests.get(url,headers=headers) # url로부터 가져오기
         if response.status_code == 200: 
@@ -367,8 +367,8 @@ def check_wp():
 
 def load_event(): #made by 2106
     event = {}
-    dates = []
-    now,after = Make_aDay(15)
+    eventdates = []
+    now,after = Make_aDay(30)
     url = "https://open.neis.go.kr/hub/SchoolSchedule"
     params = {'KEY' : 'b9558a909eb84bc68f5dd7add35f34a0',
               'ATPT_OFCDC_SC_CODE':'D10',
@@ -390,12 +390,12 @@ def load_event(): #made by 2106
     for eve in event.keys():
         change = datetime.datetime.strptime(eve, "%Y%m%d")
         dates.append(change.strftime('%m-%d') + '(' + Days[change.weekday()] + ')')
-    return dates,event
+    return eventdates,event
 
 @application.route('/eventcheck')
 def Evecheck():
-    day, events = load_event()
-    final_events = [{"title": date , "description" : event} for date,event in zip(day,events.values())]
+    eveday, events = load_event()
+    final_events = [{"title": date , "description" : event} for date,event in zip(eveday,events.values())]
     res = {
         "version": "2.0",
         "template": {
