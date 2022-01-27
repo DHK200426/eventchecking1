@@ -392,7 +392,7 @@ def load_event(): #made by 2106
         dates.append(change.strftime('%m-%d') + '(' + Days[change.weekday()] + ')')
     return eventdates,event
 
-@application.route('/eventcheck')
+@application.route('/eventcheck', methods=['POST'])
 def Evecheck():
     eveday, events = load_event()
     final_events = [{"title": date , "description" : event} for date,event in zip(eveday,events.values())]
