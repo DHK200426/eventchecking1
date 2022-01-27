@@ -389,7 +389,7 @@ def load_event(): #made by 2106
             event[res['SchoolSchedule'][1]['row'][i]['AA_YMD']] = temp
     for eve in event.keys():
         change = datetime.datetime.strptime(eve, "%Y%m%d")
-        dates.append(change.strftime('%m-%d') + '(' + Days[change.weekday()] + ')')
+        eventdates.append(change.strftime('%m-%d') + '(' + Days[change.weekday()] + ')')
     return eventdates,event
 
 @application.route('/eventcheck', methods=['POST'])
