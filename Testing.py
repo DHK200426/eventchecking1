@@ -91,12 +91,12 @@ def what_is_menu():  # made by 1316, 1301 advanced by 2106
     if Menu[i][fi] == "": first = "등록된 급식이 없습니다."
     if Menu[i][si] == "": second = "등록된 급식이 없습니다."
     if Menu[i][ti] == "": third = "등록된 급식이 없습니다."
-    return Msg[i][fi], Msg[i][si], Msg[i][ti], first, second, third, boborder
+    return Msg[i][fi], Msg[i][si], Msg[i][ti], first, second, third
 
 
 @application.route('/menu', methods=['POST'])
 def response_menu():  # 메뉴 대답 함수
-    msg1, msg2, msg3, menu1, menu2, menu3, boborder = what_is_menu()
+    msg1, msg2, msg3, menu1, menu2, menu3 = what_is_menu()
     if menu1 == "등록된 급식이 없습니다." and menu2 == "등록된 급식이 없습니다." and menu3 == "등록된 급식이 없습니다.":
         res = {
             "version": "2.0",
