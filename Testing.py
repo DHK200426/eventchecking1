@@ -22,8 +22,8 @@ def what_is_menu():  # made by 1316, 1301 advanced by 2106
     global finalMenu, Menu_saved_date
     if Menu_saved_date == "" or Menu_saved_date != today_name:
         Menu = [["", "", ""], ["", "", ""]]
-        Menu_saved_date = now
         now, after = Make_aDay(1)
+        Menu_saved_date = now
         url = "https://open.neis.go.kr/hub/mealServiceDietInfo"
         params = {'KEY': 'b9558a909eb84bc68f5dd7add35f34a0',
                   'ATPT_OFCDC_SC_CODE': 'D10',
@@ -50,11 +50,13 @@ def what_is_menu():  # made by 1316, 1301 advanced by 2106
     req = request.get_json()  # 파라미터 값 불러오기
     askmenu = req["action"]["detailParams"]["ask_menu"]["value"]
 
-    '''
+    
     now = datetime.datetime.utcnow()  # 몇 번째 주인지 계산
     date = int(utc.localize(now).astimezone(KST).strftime("%d"))
     month = int(utc.localize(now).astimezone(KST).strftime("%m"))
     year = int(utc.localize(now).astimezone(KST).strftime("%Y"))
+    
+    '''
     cday = (year - 1) * 365 + (year - 1) // 4 - (year - 1) // 100 + (year - 1) // 400
     if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0: cday += 1
     for i in range(month - 1): cday += mday[i]
