@@ -20,9 +20,9 @@ def Make_aDay(L):
 
 def what_is_menu():  # made by 1316, 1301 advanced by 2106
     global finalMenu, Menu_saved_date
-    if Menu_saved_date == "" or Menu_saved_date != today_name:
+    now, after = Make_aDay(1)
+    if Menu_saved_date == "" or Menu_saved_date != now:
         Menu = [["", "", ""], ["", "", ""]]
-        now, after = Make_aDay(1)
         Menu_saved_date = now
         url = "https://open.neis.go.kr/hub/mealServiceDietInfo"
         params = {'KEY': 'b9558a909eb84bc68f5dd7add35f34a0',
