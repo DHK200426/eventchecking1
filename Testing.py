@@ -157,7 +157,7 @@ def load_event(): #made by 2106
             event[res['SchoolSchedule'][1]['row'][i]['AA_YMD']] = temp
     return event
 
-@application.route('/eventcheck')
+@application.route('/eventcheck', methods=['POST'])
 def Evecheck():
     events = load_event()
     final_events = [{"title": date , "description" : event} for date,event in zip(events.keys(),events.values())]
