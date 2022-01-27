@@ -1,7 +1,10 @@
+from flask import Flask, request, jsonify, render_template, send_file
 import requests
 from pytz import timezone, utc
 import datetime
 from datetime import timedelta
+
+application=Flask(__name__)
 
 KST=timezone('Asia/Seoul')
 Msg = [["[오늘 아침]","[오늘 점심]","[오늘 저녁]"],["[내일 아침]","[내일 점심]","[내일 저녁]"]]
@@ -133,7 +136,7 @@ def response_menu():  # 메뉴 대답 함수
 
 def load_event(): #made by 2106
     event = {}
-    now,after = Make_aDay(7)
+    now,after = Make_aDay(15)
     url = "https://open.neis.go.kr/hub/SchoolSchedule"
     params = {'KEY' : 'b9558a909eb84bc68f5dd7add35f34a0',
               'ATPT_OFCDC_SC_CODE':'D10',
