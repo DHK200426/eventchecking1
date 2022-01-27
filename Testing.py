@@ -19,7 +19,7 @@ def Make_aDay(L):
     return snow,safter
 
 def what_is_menu():  # made by 1316, 1301 advanced by 2106
-    global finalMenu, Menu_saved_date
+    global Menu, Menu_saved_date
     now, after = Make_aDay(1)
     if Menu_saved_date == "" or Menu_saved_date != now:
         Menu = [["", "", ""], ["", "", ""]]
